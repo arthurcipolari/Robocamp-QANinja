@@ -16,22 +16,22 @@ Login com sucesso
 
 Senha incorreta
     Dado que eu acesso a página de login
-    Quando eu submeto minhas credenciais com senha incorreta
+    Quando eu submeto minhas credenciais "arthur@ninjapixel.com" e "senhaerrada"
     Então devo ver uma mensagem de alerta "Usuário e/ou senha inválidos"
 
 Email que não existe
     Dado que eu acesso a página de login
-    Quando eu submeto minhas credenciais com email nao cadastrado
+    Quando eu submeto minhas credenciais "emailerrado@ninjapixel.com" e "123456"
     Então devo ver uma mensagem de alerta "Usuário e/ou senha inválidos"
 
 Email nao informado
     Dado que eu acesso a página de login
-    Quando eu submeto minhas credenciais sem o email
+    Quando eu submeto minhas credenciais "" e "123456"
     Então devo ver uma mensagem de alerta "Opps. Informe o seu email!"
 
 Senha nao informada
     Dado que eu acesso a página de login
-    Quando eu submeto minhas credenciais sem a senha
+    Quando eu submeto minhas credenciais "arthur@ninjapixel.com" e ""
     Então devo ver uma mensagem de alerta "Opps. Informe a sua senha!"
 
 
