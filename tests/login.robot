@@ -49,24 +49,6 @@ Então devo ser autenticado
     Wait Until Page Contains    Arthur Cipolari
     Close Browser
 
-Quando eu submeto minhas credenciais com senha incorreta
-    Input Text      id:emailId      arthur@ninjapixel.com
-    Input Text      id:passId       senhaerrada
-    Click Element   class:btn
-
-Quando eu submeto minhas credenciais com email nao cadastrado
-    Input Text      id:emailId      emailerrado@ninjapixel.com
-    Input Text      id:passId       senhaqualquer
-    Click Element   class:btn
-
-Quando eu submeto minhas credenciais sem o email
-    Input Text      id:passId       senha
-    Click Element   class:btn
-
-Quando eu submeto minhas credenciais sem a senha
-    Input Text      id:emailId      arthur@ninjapixel.com
-    Click Element   class:btn
-
 Então devo ver uma mensagem de alerta "${mensagem}"
     Wait Until Page Contains    ${mensagem}
     Close Browser
