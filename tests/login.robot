@@ -6,6 +6,14 @@ Documentation       Login
 
 Library     SeleniumLibrary
 
+Resource    ../resources/actions.robot
+
+#Executa a cada início de um caso de teste
+#Test Setup  Open Browser ${url} chrome 
+
+#Executa a cada termino de um caso de teste
+Test Teardown   Close Browser
+
 # Lego (peças e vc usa a criativade para montar o que vc quiser)
 
 *** Test Cases ***
@@ -15,40 +23,26 @@ Login com sucesso
     Então devo ser autenticado
 
 Senha incorreta
-    Dado que eu acesso a página de login
-    Quando eu submeto minhas credenciais "arthur@ninjapixel.com" e "senhaerrada"
-    Então devo ver uma mensagem de alerta "Usuário e/ou senha inválidos"
+    [Template]      Tentativa de login
+    arthur@ninjapixel.com       senhaerrada     Usuário e/ou senha inválidos
 
 Email que não existe
-    Dado que eu acesso a página de login
-    Quando eu submeto minhas credenciais "emailerrado@ninjapixel.com" e "123456"
-    Então devo ver uma mensagem de alerta "Usuário e/ou senha inválidos"
+    [Template]      Tentativa de login
+    emailerrado@ninjapixel.com       123456     Usuário e/ou senha inválidos
 
 Email nao informado
-    Dado que eu acesso a página de login
-    Quando eu submeto minhas credenciais "" e "123456"
-    Então devo ver uma mensagem de alerta "Opps. Informe o seu email!"
+    [Template]      Tentativa de login
+    ${EMPTY}       senhaerrada     Opps. Informe o seu email!
 
 Senha nao informada
-    Dado que eu acesso a página de login
-    Quando eu submeto minhas credenciais "arthur@ninjapixel.com" e ""
-    Então devo ver uma mensagem de alerta "Opps. Informe a sua senha!"
-
-
+    [Template]      Tentativa de login
+    arthur@ninjapixel.com       ${EMPTY}     Opps. Informe a sua senha!
 
 *** Keywords ***
-Dado que eu acesso a página de login
-    Open Browser    http://pixel-web:3000/login     chrome
+#Testes com Input/Output iguais
+Tentativa de login
+    [Arguments]     ${email}    ${password}     ${output}
 
-Quando eu submeto minhas credenciais "${email}" e "${pass}"
-    Input Text      id:emailId      ${email}
-    Input Text      id:passId       ${pass}
-    Click Element   class:btn
-
-Então devo ser autenticado
-    Wait Until Page Contains    Arthur Cipolari
-    Close Browser
-
-Então devo ver uma mensagem de alerta "${mensagem}"
-    Wait Until Page Contains    ${mensagem}
-    Close Browser
+    Dado que eu acesso a página de login
+    Quando eu submeto minhas credenciais "${email}" e "${password}"
+    Então devo ver uma mensagem de alerta "${output}"
