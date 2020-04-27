@@ -5,6 +5,7 @@ Library     SeleniumLibrary
 
 Resource    pages/LoginPage.robot
 Resource    pages/BasePage.robot
+Resource    pages/CadastroPage.robot
 
 *** Keywords ***
 Dado que eu acesso a página de login

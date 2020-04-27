@@ -1,3 +1,17 @@
+# Infos durante as aulas
+
+## Guia de uso
+
+### Gravar saída na pasta log
+```
+robot -d .\logs tests\teste.robot
+```
+
+### Executar com variáveis de ambiente
+```
+robot -v variavel:valor testes\teste.robot
+```
+
 # NinjaPixel Setup
 
 Bem-vindo ao guia de preparação de Ambiente do NinjaPixel
